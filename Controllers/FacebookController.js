@@ -12,9 +12,10 @@ FacebookController.getConversationStart = function(request, response) {
         data.entry.forEach(function (entry) {
             var pageId = entry.id;
             var timeOfEvent = entry.time;
-            console.log(event);
             entry.messaging.forEach(function (event) {
+                console.log(event);
                 if (event.message) {
+                    console.log("no");
                     conversationLib.receivedMessage(event);
                 } else if (event.postback) {
                     console.log("yes");
