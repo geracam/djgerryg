@@ -12,11 +12,13 @@ FacebookController.getConversationStart = function(request, response) {
         data.entry.forEach(function (entry) {
             var pageId = entry.id;
             var timeOfEvent = entry.time;
-
+            console.log(event);
             entry.messaging.forEach(function (event) {
                 if (event.message) {
-                    console.log(' to convo lib');
                     conversationLib.receivedMessage(event);
+                } else if (event.postback) {
+                    console.log("yes");
+                    conversationLib.receivedPostback(event);
                 } else {
                     console.log(`Webhook received for unknown event: ${event}`);
                 }
