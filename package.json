@@ -2,9 +2,9 @@
   "name": "djgerryg",
   "version": "1.0.0",
   "description": "A Facebook messenger application for all things music.",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -17,10 +17,19 @@
   },
   "homepage": "https://github.com/geracam/djgerryg#readme",
   "dependencies": {
-    "express": "^4.15.2"
+    "body-parser": "^1.15.1",
+    "config": "^1.20.1",
+    "express": "^4.13.4",
+    "mongoose": "^4.4.15",
+    "morgan": "^1.7.0"
   },
   "devDependencies": {
     "chai": "^3.5.0",
-    "mocha": "^3.2.0"
+    "chai-http": "^2.0.1",
+    "mocha": "^2.4.5"
+  },
+  "scripts": {
+    "start": "SET NODE_ENV=dev && node server.js",
+    "test": "mocha --timeout 1000"
   }
 }
