@@ -22,6 +22,9 @@ let app = express();
 // PORT delcaration
 let port = process.env.PORT || 3000;
 
+// Validation variables
+const MESSENGER_ACCESS_TOKEN = process.env.FB_ACCESS_TOKEN;
+
 // Define middleware. NOTE: Order matters in middleware
 // @see https://expressjs.com/en/api.html#app.use
 app.use(bodyParser.json());
@@ -37,9 +40,18 @@ app.use(bodyParser.json({
 }));
 
 // Root route
-app.get("/", (request, response) => response.json({
+app.get("/", (request, response) => response.status(200).json({
     message: "I'm DJ Gerry G!"
 }));
+
+// Validation route
+app.get("/webhook", function(request, response) {
+    if (request.query['hub.mode'] == 'subscribe' && request.query['hub.verify_token'] == MESSENGER_ACCESS_TOKEN) {
+        response.status(200).send(request.query['hub.challenge']);
+    } else {
+        response.sendStatus(403);
+    }
+});
 
 app.listen(port);
 console.log(`App listening on port ${port}`);
