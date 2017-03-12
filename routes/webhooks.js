@@ -12,4 +12,8 @@ module.exports = function(app) {
     app.get("/webhook", fbAuth, function(request, response) {
         facebookController.getSuccessfulFbAuth(request, response);
     });
+
+    app.post("/webhook", function(request, response) {
+        facebookController.getConversationStart(request, response);
+    });
 }
