@@ -9,13 +9,18 @@
 
 // Declare dependencies
 let express = require ('express');
-let app = express();
 let bodyParser = require('body-parser');
 let config = require('config');
 let morgan = require('morgan');
+let crypto = require('crypto');
+let request = require('request');
+let https = require('https');
+let env = require('dotenv').config();
+
+let app = express();
 
 // PORT delcaration
-let port = 3000;
+let port = process.env.PORT || 3000;
 
 // Define middleware. NOTE: Order matters in middleware
 // @see https://expressjs.com/en/api.html#app.use

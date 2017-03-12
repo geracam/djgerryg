@@ -4,7 +4,8 @@
   "description": "A Facebook messenger application for all things music.",
   "main": "server.js",
   "scripts": {
-    "test": "mocha"
+    "start": "node server.js",
+    "test": "mocha --timeout 1000"
   },
   "repository": {
     "type": "git",
@@ -19,17 +20,14 @@
   "dependencies": {
     "body-parser": "^1.15.1",
     "config": "^1.20.1",
+    "dotenv": "^4.0.0",
     "express": "^4.13.4",
-    "mongoose": "^4.4.15",
-    "morgan": "^1.7.0"
+    "morgan": "^1.7.0",
+    "request": "^2.81.0"
   },
   "devDependencies": {
     "chai": "^3.5.0",
     "chai-http": "^2.0.1",
     "mocha": "^2.4.5"
-  },
-  "scripts": {
-    "start": "SET NODE_ENV=dev && node server.js",
-    "test": "mocha --timeout 1000"
   }
 }
