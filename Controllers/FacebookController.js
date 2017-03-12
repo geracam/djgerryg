@@ -15,6 +15,7 @@ FacebookController.getConversationStart = function(request, response) {
 
             entry.messaging.forEach(function (event) {
                 if (event.message) {
+                    console.log(' to convo lib');
                     conversationLib.receivedMessage(event);
                 } else {
                     console.log(`Webhook received for unknown event: ${event}`);
