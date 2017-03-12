@@ -1,5 +1,10 @@
 /**
  * Routes that handle direct Facebook Messenger webhook calls
+ * Messenger uses a GET to authenticate the application.
+ * Messenger uses a POST to submit responses.
+ *
+ * @author GG
+ * @see https://developers.facebook.com/docs/messenger-platform/webhook-reference
  */
 
 // Controller
@@ -14,6 +19,6 @@ module.exports = function(app) {
     });
 
     app.post("/webhook", function(request, response) {
-        facebookController.getConversationStart(request, response);
+        facebookController.postConversationStart(request, response);
     });
 }
