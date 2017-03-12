@@ -9,7 +9,7 @@ FacebookController.getConversationStart = function(request, response) {
 
     // Object must be a page subscription
     if (data.object === 'page') {
-        data.entry.foreach(function (entry) {
+        data.entry.forEach(function (entry) {
             var pageId = entry.id;
             var timeOfEvent = entry.time;
 
