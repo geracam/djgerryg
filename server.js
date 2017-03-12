@@ -8,7 +8,7 @@
 **/
 
 // Declare dependencies
-let express = require ('express');
+let express = require('express');
 let bodyParser = require('body-parser');
 let config = require('config');
 let morgan = require('morgan');
@@ -39,19 +39,13 @@ app.use(bodyParser.json({
     type: 'application/json'
 }));
 
+// Load routes
+require('./routes/webhooks')(app);
+
 // Root route
 app.get("/", (request, response) => response.status(200).json({
     message: "I'm DJ Gerry G!"
 }));
-
-// Validation route
-app.get("/webhook", function(request, response) {
-    if (request.query['hub.mode'] == 'subscribe' && request.query['hub.verify_token'] == MESSENGER_ACCESS_TOKEN) {
-        response.status(200).send(request.query['hub.challenge']);
-    } else {
-        response.sendStatus(403);
-    }
-});
 
 app.listen(port);
 console.log(`App listening on port ${port}`);
